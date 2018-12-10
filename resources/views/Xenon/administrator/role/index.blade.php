@@ -5,7 +5,7 @@
 				
   <div class="panel panel-default">
     <d iv class="panel-heading">
-      <h3 class="panel-title">{{ config('app.name') }} - User</h3>
+      <h3 class="panel-title">{{ config('app.name') }} - <i class="linecons-key"></i> Role</h3>
       
       <div class="panel-options">
         <a href="#">

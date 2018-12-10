@@ -27,8 +27,10 @@ class HomeController extends Controller
         // redirect to admin page is user is ad administrator
         if (Auth::user()->role_id === 1) {
             return redirect('/admin');
+        }elseif (Auth::user()->role_id === 2){
+            return redirect('/user');
         }
 
-        return view('home');
+        return view($this->viewLocation('home'));
     }
 }
