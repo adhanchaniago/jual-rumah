@@ -37,7 +37,25 @@ class PerumahanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $perumahan = Perumahan::create([
+                'name' => $request->get('name'),
+                'address' => $request->get('address'),
+                'description' => $request->get('description'),
+            ]);
+
+            if ($perumahan) {
+                return redirect()->back()->with('message', 'Upload Data Berhasil!')
+                    ->with('status','Data Successfully Saved!')
+                    ->with('type','success');
+            }
+
+            }catch (\Exception $e){
+                return redirect()->back()->with('message', $e->getMessage())
+                        ->with('status','Failed to Save Data!')
+                        ->with('type','error')
+                        ->withInput();
+            }
     }
 
     /**
@@ -71,7 +89,25 @@ class PerumahanController extends Controller
      */
     public function update(Request $request, Perumahan $perumahan)
     {
-        //
+        try{
+            $perumahan = $perumahan->update([
+                'name' => $request->get('name'),
+                'address' => $request->get('address'),
+                'description' => $request->get('description'),
+            ]);
+
+            if ($perumahan) {
+                return redirect()->back()->with('message', 'Edit Data Berhasil!')
+                    ->with('status','Data Successfully Saved!')
+                    ->with('type','success');
+            }
+
+            }catch (\Exception $e){
+                return redirect()->back()->with('message', $e->getMessage())
+                        ->with('status','Failed to Save Data!')
+                        ->with('type','error')
+                        ->withInput();
+            }
     }
 
     /**

@@ -37,7 +37,18 @@ class RumahTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            RumahType::create($request->all());
+                return redirect()->back()
+                ->with('message', 'Data Telah Tersimpan!')
+                ->with('status','success')
+                ->with('type','success');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('message', $e->getMessage())
+                ->with('status','error')
+                ->with('type','error');
+        }
     }
 
     /**

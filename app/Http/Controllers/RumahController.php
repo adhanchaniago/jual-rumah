@@ -43,7 +43,30 @@ class RumahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+
+            $rumah = Rumah::create([
+                'rumah_type_id' => $request->get('rumah_type_id'),
+                'perumahan_id' => $request->get('perumahan_id'),
+                'block' => $request->get('block'),
+                'number' => $request->get('number'),
+                'subsidi' => $request->get('subsidi'),
+                'harga' => $request->get('price'),
+            ]);
+
+            if($rumah){
+                return redirect()->back()->with('message', 'Upload Data Berhasil!')
+                ->with('status','Data Successfully Saved!')
+                ->with('type','success');
+            }
+
+
+            }catch (\Exception $e){
+                return redirect()->back()->with('message', $e->getMessage())
+                        ->with('status','Failed to Save Data!')
+                        ->with('type','error')
+                        ->withInput();
+            }
     }
 
     /**
