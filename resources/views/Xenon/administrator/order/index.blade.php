@@ -22,7 +22,7 @@
               @foreach ($orders as $order)
                   <tr>
                     <td>{{ $order->id }}</td>
-                    <td><a href="{{ $order->getFirstMediaUrl('photo') }}">{{ $order->code }}</a></td>
+                    <td><a href="{{ asset($order->getFirstMediaUrl('photo')) }}">{{ $order->code }}</a></td>
                     <td>{{ $order->rumah->perumahan->name }}</td>
                     <td>{{ $order->valid_until }}</td>
                     <td>{{ $order->confirmed ? 'Sudah Konfirmasi':'Belum Konfirmasi' }}</td>

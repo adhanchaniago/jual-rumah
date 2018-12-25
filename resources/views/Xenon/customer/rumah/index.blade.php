@@ -19,7 +19,7 @@
             <div class="layout-img">
               <a href="{{ route('rumah.show',$rumah->id) }}">
                 @if ($rumah->getFirstMediaUrl('photo'))
-                <img src="{{ $rumah->getFirstMediaUrl('photo') }}" />
+                <img src="{{ asset($rumah->getFirstMediaUrl('photo')) }}" />
                 @else
                 <img src="{{ asset('Xenon/assets/images/layouts/layout-sidebar.png') }}" />
                 @endif

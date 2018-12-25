@@ -44,7 +44,7 @@
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="album-image">
                       <a target="blank" href="{{ $photo->getUrl() }}" class="thumb" data-action="edit">
-                        <img src="{{ $photo->getUrl() }}" class="img-responsive" />
+                        <img src="{{ asset($photo->getUrl()) }}" class="img-responsive" />
                       </a>
           
                       <a href="#" class="name">
