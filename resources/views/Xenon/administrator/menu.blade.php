@@ -41,14 +41,14 @@
     </ul>
 </li>
 
-<li class="{{ active([],'opened active') }}">
+<li class="{{ active(['admin.order.*'],'opened active') }}">
     <a href="#">
       <i class="linecons-wallet"></i>
       <span class="title">Data Booking</span>
     </a>
     <ul>
-      <li class="{{ active('admin.user.index') }}">
-        <a href="{{ route('admin.user.index') }}">
+      <li class="{{ active('admin.order.index') }}">
+        <a href="{{ route('admin.order.index') }}">
           <span class="title">Data Masuk</span>
         </a>
       </li>

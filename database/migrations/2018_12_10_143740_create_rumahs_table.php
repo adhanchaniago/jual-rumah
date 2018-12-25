@@ -21,6 +21,7 @@ class CreateRumahsTable extends Migration
             $table->integer('number');
             $table->enum('subsidi', ['subsidi','tidak'])->default('subsidi');
             $table->integer('harga');
+            $table->text('description')->nullable();
             $table->integer('booked_by')->nullable();
             $table->boolean('document_approved')->nullable()->default(false);
             $table->timestamps();

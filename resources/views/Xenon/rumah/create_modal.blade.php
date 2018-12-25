@@ -89,6 +89,17 @@
                     @endif
                 </div>
               </div> <!-- form-group -->
+              <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}"">
+                    <label for="description" class="col-sm-2 control-label">Keterangan</label>
+                    <div class="col-sm-10">
+                    <textarea name="description" class="form-control" cols="5" id="field-5"></textarea>
+                      @if ($errors->has('description'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('description') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                  </div> <!-- form-group -->
 					
 				</div>
 				

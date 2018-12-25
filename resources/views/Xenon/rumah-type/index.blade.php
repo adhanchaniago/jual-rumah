@@ -46,7 +46,7 @@
             <a href="#" onclick="jQuery('#modalEdit-{{ $type->id }}').modal('show');" class="btn btn-icon btn-blue btn-xs"><i class="fa fa-edit"></i></a>
                 @include('Xenon.rumah-type.edit_modal')
             </div>
-            <form method="POST" action="{{ route('admin.role.destroy',$type->id) }}" accept-charset="UTF-8" style="display:inline">
+            <form method="POST" action="{{ route('admin.type-rumah.destroy',$type->id) }}" accept-charset="UTF-8" style="display:inline">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-icon btn-xs btn-red">

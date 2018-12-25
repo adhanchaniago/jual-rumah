@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
-use App\Rumah;
-use App\Perumahan;
-use App\RumahType;
+use App\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Rumah;
+use Carbon\Carbon;
 
-class RumahController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +17,9 @@ class RumahController extends Controller
      */
     public function index()
     {
-        $rumahs = Rumah::all();
+        $orders = auth()->user()->orders;
 
-        $listPerumahan = Perumahan::all();
-
-        $rumahType = RumahType::all();
-
-        return view($this->viewLocation('rumah.index'), compact(['rumahs','listPerumahan','rumahType']));
+        return view($this->viewLocation('customer.order.index'), compact(['orders']));
     }
 
     /**
@@ -30,9 +27,11 @@ class RumahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $rumah = Rumah::findOrfail($id);
+
+        return view($this->viewLocation('customer.order.create'), compact(['rumah']));
     }
 
     /**
@@ -43,19 +42,24 @@ class RumahController extends Controller
      */
     public function store(Request $request)
     {
+        $code = strtoupper(str_random(10));
+
         try{
 
-            $rumah = Rumah::create([
-                'rumah_type_id' => $request->get('rumah_type_id'),
-                'perumahan_id' => $request->get('perumahan_id'),
-                'block' => $request->get('block'),
-                'number' => $request->get('number'),
-                'subsidi' => $request->get('subsidi'),
-                'harga' => $request->get('price'),
-                'description' => $request->get('description'),
+            $order = Order::create([
+                'code' => $code,
+                'rumah_id' => $request->rumah_id,
+                'user_id' => auth()->id(),
+                'valid_until' => Carbon::today()->addDays(7),
+                'total' => $request->total
             ]);
 
-            if($rumah){
+            if($order){
+                if ($request->hasFile('file')) {
+                    $order->addMediaFromRequest('file')
+                        ->usingName($code)
+                        ->toMediaCollection('photo');
+                }
                 return redirect()->back()->with('message', 'Upload Data Berhasil!')
                 ->with('status','Data Successfully Saved!')
                 ->with('type','success');
@@ -73,21 +77,21 @@ class RumahController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rumah  $rumah
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Rumah $rumah)
+    public function show(Order $order)
     {
-        return view($this->viewLocation('rumah.show'), compact(['rumah']));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rumah  $rumah
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rumah $rumah)
+    public function edit(Order $order)
     {
         //
     }
@@ -96,10 +100,10 @@ class RumahController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rumah  $rumah
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rumah $rumah)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -107,10 +111,10 @@ class RumahController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rumah  $rumah
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rumah $rumah)
+    public function destroy(Order $order)
     {
         //
     }

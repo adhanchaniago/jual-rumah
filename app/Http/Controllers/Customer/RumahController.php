@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
 use App\Rumah;
-use App\Perumahan;
-use App\RumahType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RumahController extends Controller
 {
@@ -16,13 +15,9 @@ class RumahController extends Controller
      */
     public function index()
     {
-        $rumahs = Rumah::all();
+        $rumahs = Rumah::orderBy('id', 'DESC')->paginate(3);
 
-        $listPerumahan = Perumahan::all();
-
-        $rumahType = RumahType::all();
-
-        return view($this->viewLocation('rumah.index'), compact(['rumahs','listPerumahan','rumahType']));
+        return view($this->viewLocation('customer.rumah.index'), compact(['rumahs']));
     }
 
     /**
@@ -43,31 +38,7 @@ class RumahController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-
-            $rumah = Rumah::create([
-                'rumah_type_id' => $request->get('rumah_type_id'),
-                'perumahan_id' => $request->get('perumahan_id'),
-                'block' => $request->get('block'),
-                'number' => $request->get('number'),
-                'subsidi' => $request->get('subsidi'),
-                'harga' => $request->get('price'),
-                'description' => $request->get('description'),
-            ]);
-
-            if($rumah){
-                return redirect()->back()->with('message', 'Upload Data Berhasil!')
-                ->with('status','Data Successfully Saved!')
-                ->with('type','success');
-            }
-
-
-            }catch (\Exception $e){
-                return redirect()->back()->with('message', $e->getMessage())
-                        ->with('status','Failed to Save Data!')
-                        ->with('type','error')
-                        ->withInput();
-            }
+        //
     }
 
     /**
@@ -76,9 +47,11 @@ class RumahController extends Controller
      * @param  \App\Rumah  $rumah
      * @return \Illuminate\Http\Response
      */
-    public function show(Rumah $rumah)
+    public function show($id)
     {
-        return view($this->viewLocation('rumah.show'), compact(['rumah']));
+        $rumah = Rumah::findOrfail($id);
+        
+        return view($this->viewLocation('customer.rumah.show'), compact(['rumah']));
     }
 
     /**

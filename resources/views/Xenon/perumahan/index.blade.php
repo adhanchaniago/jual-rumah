@@ -33,7 +33,7 @@
           <th>#</th>
           <th>Nama</th>
           <th>Alamat</th>
-          <th>Deskripsi</th>
+          <th width="20%">Deskripsi</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -46,7 +46,7 @@
         <td>{{ $perumahan->address }}</td>
         <td>{{ $perumahan->description }}</td>
         <td>{{ $perumahan->status }}</td>
-        <td width="20%">
+        <td>
             <!-- Modal Form Edit-->
             <a href="#" onclick="jQuery('#modalEdit-{{ $perumahan->id }}').modal('show');" class="btn btn-icon btn-blue btn-xs"><i class="fa fa-edit"></i></a>
                 @include('Xenon.perumahan.edit_modal')

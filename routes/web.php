@@ -22,22 +22,34 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::resource('perumahan', 'PerumahanController');
 
+	Route::post('upload-photo','UploadPhotoController@upload')->name('upload.photo');
+
+	Route::resource('order', 'OrderController');
+	
 	Route::get('/application-menus',[
 		'as'	=>	'app.menu',
 		'uses'	=>	'Admin\MenuController@index'
 	]);
 });
 
-Route::group(['prefix'=>'user','as'=>'user.'], function(){
+Route::group(['prefix'=>'user','as'=>'user.','midleware'=>'auth'], function(){
 
 	Route::get('/',[
 		'as'	=>	'dashboard',
 		'uses'	=>	'Customer\CustomerController@index'
 	]);
+	
+	Route::get('order','Customer\OrderController@index')->name('order.index');
+
+	Route::post('order','Customer\OrderController@store')->name('order.store');
+
+	Route::get('order/{id}','Customer\OrderController@create')->name('order.create');
 
 });
 
-Route::get('/rumah', 'RumahController@index')->name('rumah.index');
+Route::get('/rumah', 'Customer\RumahController@index')->name('rumah.index');
+
+Route::get('rumah/{id}','Customer\RumahController@show')->name('rumah.show');
 
 Auth::routes();
 
