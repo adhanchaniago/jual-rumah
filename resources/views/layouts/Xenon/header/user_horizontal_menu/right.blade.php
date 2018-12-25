@@ -12,7 +12,7 @@
     
   </li>
   
-  <li class="dropdown xs-left">
+  {{-- <li class="dropdown xs-left">
     <a href="#" data-toggle="dropdown" class="notification-icon">
       <i class="fa-envelope-o"></i>
       <span class="badge badge-green">15</span>
@@ -252,7 +252,7 @@
       </a>
     </li>
     </ul>
-  </li>
+  </li> --}}
 
   <li class="dropdown user-profile">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

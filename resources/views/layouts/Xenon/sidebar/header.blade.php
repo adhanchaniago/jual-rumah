@@ -2,12 +2,12 @@
 
   <!-- logo -->
   <div class="logo">
-    <a href="{{ route('home') }}" class="logo-expanded">
-      <img src="{{ asset('Xenon/assets/images/logo@2x.png') }}" width="80" alt="" />
+    <a style="color: #ffff;" href="{{ route('home') }}" class="logo-expanded">
+      <h4>Maximal Agen Property</h4>
     </a>
 
-    <a href="{{ route('home') }}" class="logo-collapsed">
-      <img src="{{ asset('Xenon/assets/images/logo-collapsed@2x.png') }}" width="40" alt="" />
+    <a style="color: #ffff;" href="{{ route('home') }}" class="logo-collapsed">
+     <h4>MAP</h4>
     </a>
   </div>
 

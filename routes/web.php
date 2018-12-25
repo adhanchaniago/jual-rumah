@@ -25,7 +25,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 	Route::post('upload-photo','UploadPhotoController@upload')->name('upload.photo');
 
 	Route::resource('order', 'OrderController');
-	
+
+	Route::post('verify-payment', 'Admin\VerifyPaymentController@verify')->name('verify.payment');
+
 	Route::get('/application-menus',[
 		'as'	=>	'app.menu',
 		'uses'	=>	'Admin\MenuController@index'

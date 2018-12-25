@@ -45,8 +45,7 @@
 			<!-- Navbar Brand -->
 			<div class="navbar-brand">
 				<a href="dashboard-1.html" class="logo">
-					<img src="{{ asset('Xenon/assets/images/logo-white-bg@2x.png') }}" width="80" alt="" class="hidden-xs" />
-					<img src="{{ asset('Xenon/assets/images/logo@2x.png') }}" width="80" alt="" class="visible-xs" />
+						Maximal Agen Property
 				</a>
 				<a href="#" data-toggle="settings-pane" data-animate="true">
 					<i class="linecons-cog"></i>
