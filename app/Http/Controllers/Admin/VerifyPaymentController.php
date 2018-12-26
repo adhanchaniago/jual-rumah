@@ -36,6 +36,10 @@ class VerifyPaymentController extends Controller
     {
         $order = Order::whereCode($request->code)->first();
 
+        $order->rumah()->update([
+            'booked_by' => null
+        ]);
+
         try{
 
             $order->rejected = true;
