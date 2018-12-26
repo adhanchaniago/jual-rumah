@@ -33,10 +33,10 @@
                 <a href="#" class="">Rumah Type {{ $rumah->rumahType->type }}</a>
               </li>
               <li>
-                <a href="#" class="">{{ $rumah->harga }}</a>
+                <a class="btn btn-icon btn-primary" href="#" class=""><b style="color: #ffff; font-size: 1.05em">Rp. {{ number_format($rumah->harga ,2,',','.')}}</b></a>
               </li>
               <li>
-                <a href="#" class="">{{ $rumah->perumahan->address }}</a>
+                <a href="#" class=""><i class="fa fa-home"></i> {{ $rumah->perumahan->address }}</a>
               </li>
             </ul>
           </div>

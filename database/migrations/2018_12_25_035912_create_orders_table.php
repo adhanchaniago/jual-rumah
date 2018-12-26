@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('rumah_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->boolean('confirmed')->nullable()->default(false);
+            $table->boolean('rejected')->nullable()->default(false);
             $table->date('confirmed_at')->nullable();
             $table->date('valid_until')->nullable();
             $table->integer('total')->unsigned()->nullable();

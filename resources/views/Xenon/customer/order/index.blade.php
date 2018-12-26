@@ -14,6 +14,7 @@
                   <th>Rumah</th>
                   <th>Valid Sampai</th>
                   <th>Konfirmasi</th>
+                  <th>Pembatalan</th>
                   <th>Down Payment</th>
                 </tr>
               </thead>
@@ -26,6 +27,7 @@
                       <td>{{ $order->rumah->perumahan->name }}</td>
                       <td>{{ $order->valid_until }}</td>
                       <td>{{ $order->confirmed ? 'Sudah Konfirmasi':'Belum Konfirmasi' }}</td>
+                      <td>{{ $order->rejected ? 'Telah Dibatalkan':'Status Valid' }}</td>
                       <td>{{ $order->total }}</td>
                     </tr>
                 @endforeach

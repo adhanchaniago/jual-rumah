@@ -54,7 +54,7 @@
               <span class="badge bg-green">{{ $rumah->subsidi }}</span>
               @endif
             </td>
-            <td>{{ $rumah->harga }}</td>
+            <td>Rp. {{ number_format($rumah->harga ,2,',','.')}}</td>
             <td>
               @if ($rumah->customer)
               <a href="{{ route('admin.user.show', $rumah->customer->id) }}">
@@ -72,7 +72,9 @@
               @endif
             </td>
             <td>
-              <a href="{{ route('admin.rumah.show', $rumah->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-search"></i> Detail</a>
+              <a href="{{ route('admin.rumah.show', $rumah->id) }}" class="btn btn-xs btn-info"><i class="fa fa-search"></i> Detail</a>
+              <a class="btn btn-xs btn-secondary" href="#" onclick="jQuery('#modalEdit-{{ $rumah->id }}').modal('show');" class="btn btn-icon btn-blue btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                @include('Xenon.rumah.edit_modal')
             </td>
           </tr>
       @endforeach
