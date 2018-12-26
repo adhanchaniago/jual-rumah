@@ -15,7 +15,14 @@ class RumahController extends Controller
      */
     public function index()
     {
-        $rumahs = Rumah::orderBy('id', 'DESC')->paginate(3);
+        $rumahs = Rumah::whereNull('booked_by')->orderBy('id', 'DESC')->paginate(3);
+
+        return view($this->viewLocation('customer.rumah.index'), compact(['rumahs']));
+    }
+
+    public function sold()
+    {
+        $rumahs = Rumah::whereNotNull('booked_by')->orderBy('id', 'DESC')->paginate(3);
 
         return view($this->viewLocation('customer.rumah.index'), compact(['rumahs']));
     }

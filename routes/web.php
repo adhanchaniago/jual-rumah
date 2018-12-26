@@ -51,6 +51,8 @@ Route::group(['prefix'=>'user','as'=>'user.','midleware'=>'auth'], function(){
 
 Route::get('/rumah', 'Customer\RumahController@index')->name('rumah.index');
 
+Route::get('rumah/terjual','Customer\RumahController@sold')->name('rumah.sold');
+
 Route::get('rumah/{id}','Customer\RumahController@show')->name('rumah.show');
 
 Auth::routes();

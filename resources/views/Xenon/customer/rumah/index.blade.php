@@ -43,7 +43,11 @@
   
         </div>
       @empty
-          
+        <div class="col-md-12">
+          <h4 class="text-center">
+            Data Tidak Tersedia
+          </h4>
+        </div>  
       @endforelse
     </div>
     <div class="row">

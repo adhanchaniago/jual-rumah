@@ -44,7 +44,15 @@ class OrderController extends Controller
     {
         $code = strtoupper(str_random(10));
 
+        $rumah = Rumah::findOrfail($request->rumah_id);
+
         try{
+
+            if ($rumah->booked_by) {
+                return redirect()->back()->with('message', 'Rumah Tidak Tersedia!')
+                ->with('status','Rumah Telah Dibooking!')
+                ->with('type','warning');
+            }
 
             $order = Order::create([
                 'code' => $code,
@@ -53,6 +61,10 @@ class OrderController extends Controller
                 'valid_until' => Carbon::today()->addDays(7),
                 'total' => $request->total
             ]);
+
+            $rumah->booked_by = auth()->id();
+
+            $rumah->save();
 
             if($order){
                 if ($request->hasFile('file')) {

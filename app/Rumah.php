@@ -31,4 +31,9 @@ class Rumah extends Model implements HasMedia
     {
         return $this->belongsTo(RumahType::class);
     }
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class,'booked_by');
+    }
 }

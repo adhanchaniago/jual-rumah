@@ -14,8 +14,8 @@
           <span class="title">Terbaru</span>
         </a>
       </li>
-      <li>
-        <a href="dashboard-3.html">
+      <li class="{{ active(['rumah.sold']) }}">
+        <a href="{{ route('rumah.sold') }}">
           <span class="title">Terjual</span>
         </a>
       </li>

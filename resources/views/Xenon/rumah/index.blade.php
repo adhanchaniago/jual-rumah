@@ -56,9 +56,9 @@
             </td>
             <td>{{ $rumah->harga }}</td>
             <td>
-              @if ($rumah->bookedBy)
-              <a href="{{ route('admin.user.show', $rumah->bookedBy->id) }}">
-                {{ $rumah->bookedBy->username }}
+              @if ($rumah->customer)
+              <a href="{{ route('admin.user.show', $rumah->customer->id) }}">
+                {{ $rumah->customer->username }}
               </a>
               @else
               <span class="badge bg-red">Kosong</span>
