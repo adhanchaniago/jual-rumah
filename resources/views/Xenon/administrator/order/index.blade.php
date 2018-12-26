@@ -14,6 +14,7 @@
                 <th>Rumah</th>
                 <th>Valid Sampai</th>
                 <th>Konfirmasi</th>
+                <th>Pembatalan</th>
                 <th>Down Payment</th>
                 <th>#</th>
               </tr>
@@ -30,10 +31,11 @@
                     <td>{{ $order->rumah->perumahan->name }}</td>
                     <td>{{ $order->valid_until }}</td>
                     <td>{{ $order->confirmed ? 'Sudah Konfirmasi':'Belum Konfirmasi' }}</td>
+                    <td>{{ $order->rejected ? 'Telah Dibatalkan':'Status Valid' }}</td>
                     <td>{{ $order->total }}</td>
                     <td>
-                        @if (!$order->confirmed)
-                          <a class="btn btn-xs btn-blue" href="#" onclick="event.preventDefault(); document.getElementById('verify-payment').submit();">
+                        @if (!$order->confirmed && !$order->rejected)
+                        <a class="btn btn-xs btn-blue" href="#" onclick="event.preventDefault(); document.getElementById('verify-payment').submit();">
                             <i class="fa fa-check"></i> terima
                           </a>
                         
@@ -41,6 +43,15 @@
                             @csrf
                             <input type="hidden" name="code" value="{{ $order->code }}">
                           </form>
+
+                          <a class="btn btn-xs btn-red" href="#" onclick="event.preventDefault(); document.getElementById('reject-payment').submit();">
+                              <i class="fa fa-remove"></i> tolak
+                            </a>
+                          
+                            <form id="reject-payment" action="{{ route('admin.reject.payment') }}" method="POST" style="display: none;">
+                              @csrf
+                              <input type="hidden" name="code" value="{{ $order->code }}">
+                            </form>
                         @endif
                     </td>
                   </tr>

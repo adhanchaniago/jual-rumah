@@ -52,20 +52,24 @@
           <span class="title">Data Masuk</span>
         </a>
       </li>
-      <li class="{{ active('admin.user.index') }}">
-          <a href="{{ route('admin.user.index') }}">
-            <span class="title">Semua Booking</span>
+    </ul>
+</li>
+
+<li class="{{ active(['admin.report.*'],'opened active') }}">
+    <a href="#">
+      <i class="linecons-doc"></i>
+      <span class="title">Laporan Pemesanan</span>
+    </a>
+    <ul>
+      <li class="{{ active('admin.report.confirmed') }}">
+        <a href="{{ route('admin.report.confirmed') }}">
+          <span class="title">Telah Konfirmasi</span>
+        </a>
+      </li>
+      <li class="{{ active('admin.report.notConfirmed') }}">
+          <a href="{{ route('admin.report.notConfirmed') }}">
+            <span class="title">Belum Konfirmasi</span>
           </a>
         </li>
-      <li class="{{ active('admin.user.index') }}">
-        <a href="{{ route('admin.user.index') }}">
-          <span class="title">Sudah Verifikasi</span>
-        </a>
-      </li>
-      <li class="{{ active('admin.role.index') }}">
-        <a href="{{ route('admin.role.index') }}">
-          <span class="title">Belum Verifikasi</span>
-        </a>
-      </li>
     </ul>
 </li>

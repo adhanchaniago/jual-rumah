@@ -8,7 +8,7 @@
             </div>
             
             <div class="modal-body">
-                <form class="form-horizontal"  action="{{ route('admin.rumah.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal"  action="{{ route('admin.rumah.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('POST')
 
@@ -35,9 +35,9 @@
                         <option value="{{ $type->id }}">{{ $type->type }}</option>
                     @endforeach
                   </select>
-                @if ($errors->has('address'))
+                @if ($errors->has('rumah_type_id'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('address') }}</strong>
+                          <strong>{{ $errors->first('rumah_type_id') }}</strong>
                       </span>
                   @endif
               </div>

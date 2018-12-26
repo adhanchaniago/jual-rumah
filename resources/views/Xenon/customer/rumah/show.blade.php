@@ -7,6 +7,9 @@
     <h1 class="title">{{ $rumah->perumahan->name }}</h1>
     <p class="description">{{$rumah->perumahan->name }} Blok. {{ $rumah->block }}/{{ $rumah->number}} {{ $rumah->perumahan->address }}</p>
   </div>
+  <div class="col-md-4">
+    <p>{{$rumah->perumahan->description }}</p>
+  </div>
   
 </div>
 
@@ -19,7 +22,7 @@
   
         <!-- Album Header -->
         <div class="album-header">
-          <h2>Rp. {{ $rumah->harga }}</h2>
+          <h2>Rp. {{ number_format($rumah->harga ,2,',','.')}}</h2>
         </div>
   
         <!-- Sorting Information -->

@@ -28,6 +28,12 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::post('verify-payment', 'Admin\VerifyPaymentController@verify')->name('verify.payment');
 
+	Route::post('reject-payment', 'Admin\VerifyPaymentController@reject')->name('reject.payment');
+
+	Route::get('laporan-confirmed', 'Admin\ReportController@orderConfirmed')->name('report.confirmed');
+
+	Route::get('laporan-notconfirmed', 'Admin\ReportController@notConfirmed')->name('report.notConfirmed');
+
 	Route::get('/application-menus',[
 		'as'	=>	'app.menu',
 		'uses'	=>	'Admin\MenuController@index'
