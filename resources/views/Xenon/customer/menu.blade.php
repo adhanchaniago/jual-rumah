@@ -9,11 +9,6 @@
           <span class="title">Semua</span>
         </a>
       </li>
-      <li>
-        <a href="dashboard-2.html">
-          <span class="title">Terbaru</span>
-        </a>
-      </li>
       <li class="{{ active(['rumah.sold']) }}">
         <a href="{{ route('rumah.sold') }}">
           <span class="title">Terjual</span>
@@ -62,16 +57,6 @@
               <a href="{{ route('user.order.index') }}">
                 <span class="title">Semua Booking</span>
               </a>
-            </li>
-        <li class="">
-          <a href="layout-collapsed-sidebar.html">
-            <span class="title">Sudah Verifikasi</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="layout-static-sidebar.html">
-            <span class="title">Berlum Verifikasi</span>
-          </a>
         </li>
       </ul>
     </li>

@@ -17,6 +17,7 @@
                 <th>Pembatalan</th>
                 <th>Down Payment</th>
                 <th>#</th>
+                <th>#</th>
               </tr>
             </thead>
             
@@ -53,6 +54,9 @@
                               <input type="hidden" name="code" value="{{ $order->code }}">
                             </form>
                         @endif
+                    </td>
+                    <td>
+                      <a href="{{ route('admin.order.show',$order->code) }}" class="btn btn-secondary"><i class="fa fa-print"></i> Cetak</a>
                     </td>
                   </tr>
               @endforeach

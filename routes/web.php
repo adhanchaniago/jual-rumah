@@ -49,9 +49,11 @@ Route::group(['prefix'=>'user','as'=>'user.','midleware'=>'auth'], function(){
 	
 	Route::get('order','Customer\OrderController@index')->name('order.index');
 
+	Route::get('order/{code}','Customer\OrderController@show')->name('order.show');
+
 	Route::post('order','Customer\OrderController@store')->name('order.store');
 
-	Route::get('order/{id}','Customer\OrderController@create')->name('order.create');
+	Route::get('order/rumah/{id}','Customer\OrderController@create')->name('order.create');
 
 });
 
