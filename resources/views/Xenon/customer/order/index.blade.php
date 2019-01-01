@@ -16,6 +16,7 @@
                   <th>Konfirmasi</th>
                   <th>Pembatalan</th>
                   <th>Down Payment</th>
+                  <th>#</th>
                 </tr>
               </thead>
               
@@ -29,6 +30,9 @@
                       <td>{{ $order->confirmed ? 'Sudah Konfirmasi':'Belum Konfirmasi' }}</td>
                       <td>{{ $order->rejected ? 'Telah Dibatalkan':'Status Valid' }}</td>
                       <td>{{ $order->total }}</td>
+                      <td>
+                        <a href="{{ route('user.order.show',$order->code) }}" class="btn btn-secondary"><i class="fa fa-print"></i> Print Status</a>
+                      </td>
                     </tr>
                 @endforeach
               </tbody>

@@ -46,9 +46,11 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($code)
     {
-        //
+        $order = Order::whereCode($code)->first();
+
+        return view($this->viewLocation('administrator.order.show'), compact(['order']));
     }
 
     /**

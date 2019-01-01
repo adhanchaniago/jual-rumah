@@ -106,7 +106,7 @@
             <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}"">
                 <label for="file" class="col-sm-2 control-label">File</label>
                 <div class="col-sm-10">
-                <input class="form-control" type="file" name="file" id="file">
+                <input class="form-control" type="file" name="file" id="file" required>
                 <input type="hidden" name="rumah_id" value="{{ $rumah->id }}">
                 @if ($errors->has('file'))
                         <span class="help-file">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Notifications\OrderApprovedNotification;
+use App\Notifications\OrderRejectedNotification;
 
 class VerifyPaymentController extends Controller
 {
@@ -18,6 +20,8 @@ class VerifyPaymentController extends Controller
             $order->save();
 
             if ($order) {
+                // send notification
+                $order->user->notify(new OrderApprovedNotification($order));
                 return redirect()->back()
                     ->with('message', 'Konfirmasi Berhasil!')
                     ->with('status','Pembayaran Telah Dikonfirmasi')
@@ -46,6 +50,8 @@ class VerifyPaymentController extends Controller
             $order->save();
 
             if ($order) {
+                // send notification
+                $order->user->notify(new OrderRejectedNotification($order));
                 return redirect()->back()
                     ->with('message', 'Pembatalan Berhasil!')
                     ->with('status','Status Telah Dibatalakan')

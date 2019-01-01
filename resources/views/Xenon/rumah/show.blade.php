@@ -20,7 +20,7 @@
         
               <!-- Album Header -->
               <div class="album-header">
-                <h2>Rp. {{$rumah->harga}}</h2>
+                <h2>Rp. {{ number_format($rumah->harga ,2,',','.')}}</h2>
               </div>
         
               <!-- Sorting Information -->
