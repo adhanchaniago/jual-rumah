@@ -1,5 +1,37 @@
 @extends('layouts.Xenon.master')
 
+@section('script')
+<script>
+function showMap() {
+        var uluru = {lat: {{ $rumah->latitude }}, lng: {{$rumah->longitude}} };
+        var map = new google.maps.Map(document.getElementById('kostMapLocation'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+        var contentString = "<div class='col-sm-12'><h4>{{$rumah->perumahan->name }} Blok. {{ $rumah->block }}/{{ $rumah->number}} </h4><p>{{ $rumah->perumahan->address }}</p><p class='text-success'>tersedia : {{ $rumah->harga }}</p></div>";
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 200
+        });
+
+        marker.addListener('click',function(){
+          infoWindow.open(map, marker);
+        });
+
+        infoWindow.open(map,marker);
+      }
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVHgvRIsfyRFZncJe1GDq5c9oOBtyVa6s&callback=showMap">
+</script>
+@endsection
+
 @section('content')
 <div class="col-md-12">
     <div class="page-title">
@@ -62,12 +94,22 @@
                 @endforelse
         
               </div>
+
+              <div class="col-md-12">
+              <div class="panel panel-success panel-color">
+                <div class="panel-heading">
+                  <h5>Lokasi Perumahan</h5>
+                </div>
+                <div class="panel-body">
+                  <div id="kostMapLocation" style="width: 100%;height: 400px"></div>
+                </div>
+              </div>
+            </div>
         
-        
-              <button class="btn btn-white btn-block">
-                <i class="fa-bars"></i>
-                Load More Images
-              </button>
+              <div class="col-sm-2"></div>
+              <div class="col-sm-10">
+                <div id="kostMapLocation" style="width: 100%;height: 400px"></div>
+              </div>
         
             </div>
         

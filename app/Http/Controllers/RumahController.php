@@ -32,7 +32,11 @@ class RumahController extends Controller
      */
     public function create()
     {
-        //
+        $listPerumahan = Perumahan::all();
+
+        $rumahType = RumahType::all();
+
+        return view($this->viewLocation('rumah.create'), compact(['listPerumahan','rumahType']));
     }
 
     /**
@@ -53,6 +57,8 @@ class RumahController extends Controller
                 'subsidi' => $request->get('subsidi'),
                 'harga' => $request->get('price'),
                 'description' => $request->get('description'),
+                'longitude' => $request->get('longitude'),
+                'latitude' => $request->get('latitude'),
             ]);
 
             if($rumah){

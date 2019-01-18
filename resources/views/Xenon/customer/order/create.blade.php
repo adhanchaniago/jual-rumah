@@ -6,7 +6,7 @@
     <!-- Colored panel, remember to add "panel-color" before applying the color -->
     <div class="panel panel-color panel-info"><!-- Add class "collapsed" to minimize the panel -->
       <div class="panel-heading">
-        <h3 class="panel-title">Detail Order</h3>
+        <h3 class="panel-title">Detail Order (Lakukan Pembayaran Sebelum {{\Carbon\Carbon::now()->addDays(3)->format('D d-m-Y')}})</h3>
       </div>
       
       <div class="panel-body">

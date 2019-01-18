@@ -16,7 +16,7 @@
                   <th>Konfirmasi</th>
                   <th>Pembatalan</th>
                   <th>Down Payment</th>
-                  <th>#</th>
+                  <th colspan="2">#</th>
                 </tr>
               </thead>
               
@@ -32,6 +32,9 @@
                       <td>{{ $order->total }}</td>
                       <td>
                         <a href="{{ route('user.order.show',$order->code) }}" class="btn btn-secondary"><i class="fa fa-print"></i> Print Status</a>
+                      </td>
+                      <td>
+                        <a href="{{ route('user.angsuran.show',$order->id) }}" class="btn btn-secondary"><i class="fa fa-money"></i> Cicilan</a>
                       </td>
                     </tr>
                 @endforeach

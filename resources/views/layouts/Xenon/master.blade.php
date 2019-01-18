@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="{{ asset('Xenon/assets/css/custom.css') }}">
 
 	<script src="{{ asset('Xenon/assets/js/jquery-1.11.1.min.js') }}"></script>
+	<script src="{{ asset('Xenon/assets/js/jquery-2.1.1.min.js') }}"></script>
+	@yield('css')
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>

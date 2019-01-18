@@ -107,19 +107,11 @@
 									<strong>Rp. {{ number_format($order->total ,2,',','.')}}</strong>
 								</span>
 								
-								<span>
-									PPN: 
-									<strong>10%</strong>
-								</span>
 								
 								<hr />
 								
 								<span>
-                  Grand Total:
-                  @php
-                      $grand_total = $order->total + $order->total * 0.1;
-                  @endphp
-									<strong>Rp. {{ number_format($grand_total ,2,',','.')}}</strong>
+									<strong>Rp. {{ number_format($order->total ,2,',','.')}}</strong>
 								</span>
 							</div>
 							

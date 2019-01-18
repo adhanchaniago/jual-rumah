@@ -81,7 +81,7 @@
       </tbody>
     </table>
     <div class="vspacer v3"></div>
-    <a href="#" onclick="jQuery('#modal-2').modal('show');" class="btn btn-info icon">
+    <a href="{{ route('admin.rumah.create') }}" class="btn btn-info icon">
       <i class="linecons-shop"></i><span> Tambah Data</span>
     </a>
     @include('Xenon.rumah.create_modal')

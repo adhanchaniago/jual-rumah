@@ -22,6 +22,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'administrator'], f
 
 	Route::resource('perumahan', 'PerumahanController');
 
+	Route::resource('angsuran','Admin\AngsuranController');
+
 	Route::post('upload-photo','UploadPhotoController@upload')->name('upload.photo');
 
 	Route::resource('order', 'OrderController');
@@ -54,6 +56,12 @@ Route::group(['prefix'=>'user','as'=>'user.','midleware'=>'auth'], function(){
 	Route::post('order','Customer\OrderController@store')->name('order.store');
 
 	Route::get('order/rumah/{id}','Customer\OrderController@create')->name('order.create');
+
+	// Route::get('angsuran/{$order_id}','Customer\AngsuranController@show')->name('angsuran.show');
+
+	Route::resource('angsuran','Customer\AngsuranController')->except(['index']);
+
+	Route::get('angsuran/{kode}/upload', 'Customer\AngsuranController@create')->name('angsuran.create');
 
 });
 

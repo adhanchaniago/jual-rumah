@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Rumah;
 use Carbon\Carbon;
+use App\Angsuran;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,13 +72,25 @@ class OrderController extends Controller
 
             $rumah->save();
 
+            $cicilan = $rumah->harga * 0.1 / 10;
+
             if($order){
+
+                // angsuran
+                for ($i=1; $i <= 10; $i++) { 
+                    $order->angsuran()->create([
+                        'kode' => strtoupper(str_random(8)),
+                        'total' => $cicilan,
+                        'tanggal_tempo' => Carbon::now()->addMonths($i)
+                    ]);
+                }
+
                 if ($request->hasFile('file')) {
                     $order->addMediaFromRequest('file')
                         ->usingName($code)
                         ->toMediaCollection('photo');
                 }
-                return redirect()->back()->with('message', 'Upload Data Berhasil!')
+                return redirect()->route('user.order.index')->with('message', 'Upload Data Berhasil!')
                 ->with('status','Data Successfully Saved!')
                 ->with('type','success');
             }

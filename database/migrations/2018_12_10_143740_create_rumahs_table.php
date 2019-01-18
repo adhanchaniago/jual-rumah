@@ -24,6 +24,8 @@ class CreateRumahsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('booked_by')->nullable();
             $table->boolean('document_approved')->nullable()->default(false);
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }

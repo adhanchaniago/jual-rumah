@@ -20,6 +20,8 @@ class Rumah extends Model implements HasMedia
         'description',
         'booked_by',
         'document_approved',
+        'longitude',
+        'latitude'
     ];
 
     public function perumahan()

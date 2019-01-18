@@ -21,4 +21,9 @@ class Order extends Model implements HasMedia
     {
         return $this->belongsTo(Rumah::class);
     }
+
+    public function angsuran()
+    {
+        return $this->hasMany(Angsuran::class);
+    }
 }

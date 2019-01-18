@@ -55,6 +55,20 @@
     </ul>
 </li>
 
+<li class="{{ active(['admin.angsuran.*'],'opened active') }}">
+    <a href="#">
+      <i class="linecons-wallet"></i>
+      <span class="title">Data Angsuran</span>
+    </a>
+    <ul>
+      <li class="{{ active('admin.angsuran.index') }}">
+        <a href="{{ route('admin.angsuran.index') }}">
+          <span class="title">Data Masuk</span>
+        </a>
+      </li>
+    </ul>
+</li>
+
 <li class="{{ active(['admin.report.*'],'opened active') }}">
     <a href="#">
       <i class="linecons-doc"></i>
